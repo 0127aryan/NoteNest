@@ -8,6 +8,7 @@ mongoose.connect(config.connectionString)
 
 const User = require ('./models/user.model')
 const Notes = require ('./models/notes.model')
+const mime = require('mime');
 
 const express = require('express');
 const cors = require('cors');
@@ -17,6 +18,13 @@ const jwt = require("jsonwebtoken");
 const {authenticateToken} = require("./utils")
 
 app.use(express.json());
+
+app.use((req, res, next) => {
+    if (req.path.endsWith('.js')) {
+        res.setHeader('Content-Type', mime.getType('js'));
+    }
+    next();
+});
 
 app.use(cors({
     origin: ['http://localhost:5173', 'https://note-nest-lovat.vercel.app'],
