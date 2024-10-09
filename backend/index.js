@@ -1,21 +1,24 @@
-require("dotenv").config();
+import dotenv from 'dotenv';
+dotenv.config();
 
-const config = require('./config.json');
-const mongoose = require('mongoose');
+import config from './config.json' assert { type: 'json' };
+import mongoose from 'mongoose';
+import User from './models/user.model.js'
+import Notes from './models/notes.model.js'
+import mime from 'mime'
+
+import express from 'express';
+import cors from 'cors';
+import jwt from 'jsonwebtoken';
+import { authenticateToken } from './utils.js';
 
 mongoose.connect(config.connectionString)
    .then(() => console.log('Connected to MongoDB'));
 
-const User = require ('./models/user.model')
-const Notes = require ('./models/notes.model')
-const mime = require('mime');
 
-const express = require('express');
-const cors = require('cors');
 const app = express();
 
-const jwt = require("jsonwebtoken");
-const {authenticateToken} = require("./utils")
+
 
 app.use(express.json());
 
@@ -328,4 +331,4 @@ app.listen(8000, ()=> {
     console.log('Server is running on PORT 8000')
 })
 
-module.exports = app;
+export default app;
