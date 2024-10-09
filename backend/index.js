@@ -19,13 +19,6 @@ const {authenticateToken} = require("./utils")
 
 app.use(express.json());
 
-app.use((req, res, next) => {
-    if (req.path.endsWith('.js')) {
-        res.setHeader('Content-Type', mime.getType('js'));
-    }
-    next();
-});
-
 app.use(cors({
     origin: ['http://localhost:5173', 'https://note-nest-lovat.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -33,6 +26,13 @@ app.use(cors({
     credentials: true,
     })
 );
+
+app.use((req, res, next) => {
+    if (req.path.endsWith('.js')) {
+        res.setHeader('Content-Type', 'application/javascript');
+    }
+    next();
+});
 
 app.get("/", (req,res) => {
     res.json({data: "hello"})

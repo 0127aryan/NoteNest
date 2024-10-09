@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { useState } from 'react'
 import PasswordInput from '../../components/Input/PasswordInput'
 import Navbar from '../../components/Navbar/Navbar'

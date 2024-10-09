@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://note-nest-lovat.vercel.app/'
+export const BASE_URL = 'http://note-nest-lovat.vercel.app'
