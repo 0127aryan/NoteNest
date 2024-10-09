@@ -23,7 +23,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  origin: ['http://localhost:5173', 'https://note-nest-lovat.vercel.app'],
+  origin: ['https://serene-donut-5d3a9a.netlify.app/', 'https://note-nest-lovat.vercel.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
