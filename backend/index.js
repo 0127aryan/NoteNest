@@ -31,7 +31,7 @@ app.use(cors(corsOptions));
 
 app.use((req, res, next) => {
     if (req.path.endsWith('.js')) {
-        res.setHeader('Content-Type', 'application/javascript');
+        res.setHeader('Content-Type', 'application/javascript', mime.getType('js'));
     }
     next();
 });
