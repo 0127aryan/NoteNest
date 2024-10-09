@@ -18,9 +18,11 @@ const {authenticateToken} = require("./utils")
 
 app.use(express.json());
 
-app.use(
-    cors({
-        origin: "*",
+app.use(cors({
+    origin: ['http://localhost:5173', 'https://note-nest-lovat.vercel.app'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
     })
 );
 
